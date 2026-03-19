@@ -1,4 +1,4 @@
-module encrypter
+module password-encoder
 
 go 1.25.0
 
