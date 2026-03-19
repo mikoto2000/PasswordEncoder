@@ -1,0 +1,37 @@
+{
+  "remoteEnv": {
+    "EDITOR": "/vim --appimage-extract-and-run",
+    "LESSCHARSET": "utf-8",
+    "SHELL": "bash",
+    "TERM": "xterm-256color",
+  },
+  "runArgs": [
+    "--add-host=host.docker.internal:host-gateway"
+  ],
+  "postCreateCommand": "npm install -g @anthropic-ai/claude-code; npm install -g @openai/codex; npm install -g @google/gemini-cli",
+  "mounts": [
+    {
+      "type": "bind",
+      "source": "${localEnv:HOME}/.vim",
+      "target": "/home/vscode/.vim"
+    },
+    {
+      "type": "bind",
+      "source": "${localEnv:HOME}/.gitconfig",
+      "target": "/home/vscode/.gitconfig"
+    },
+    {
+      "type": "bind",
+      "source": "${localEnv:HOME}/.ssh",
+      "target": "/home/vscode/.ssh"
+    },
+    {
+      "type": "bind",
+      "source": "${localEnv:HOME}/.codex",
+      "target": "/home/vscode/.codex"
+    },
+  ],
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  }
+}
